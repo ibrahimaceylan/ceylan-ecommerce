@@ -16,17 +16,17 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
 export const removeItemFromCart = (cartItems, cartItemToRemove) => {
   const existingCartItem = cartItems.find(
-    cartItem => cartItem.id == cartItemToRemove.id
+    cartItem => cartItem.id === cartItemToRemove.id
   );
 
-  if (existingCartItem.quantity == 1) {
+  if (existingCartItem.quantity === 1) {
     //if there is only 1 item left then remove it
     return cartItems.filter(cartItem => cartItem.id !== cartItemToRemove.id);
   }
 
   // If there are multiple same item in the basket then remove 1 by 1
   return cartItems.map(cartItem =>
-    cartItem.id == cartItemToRemove.id
+    cartItem.id === cartItemToRemove.id
       ? { ...cartItem, quantity: cartItem.quantity - 1 }
       : cartItem
   );
